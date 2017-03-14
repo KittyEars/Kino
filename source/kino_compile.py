@@ -11,6 +11,10 @@ ntDeclaration = 'Declaration'
 ntIdentifier = 'Identifier'
 ntLine = 'Line'
 ntProgram = 'Program'
+ntFunctionDecl = 'Function_Decl'
+ntFunctionCall = 'Function_Call'
+ntParameters = 'Parameters'
+ntArguments = 'Arguments'
 
 label_count = 0
 
@@ -128,7 +132,6 @@ def compile ( node, env, stackcount ):
 		return compile ( node.leaf, env, stackcount )
 
 	elif ( node.type == ntProgram ):
-		
 		stack_env = compile ( node.leaf, env, stackcount )
 		if ( len ( node.children ) > 0 ):
 			if ( stack_env != None ):
@@ -149,8 +152,19 @@ def compile ( node, env, stackcount ):
 		print ( 'sw $v0, %s($zero)' % stackcount )
 		env = kino_env.extend_environment ( [node.leaf], [stackcount], env )
 		return [ env, stackcount + 4]
+	
+	elif ( node.type == ntFunctionDecl ):
+		pass
+	elif ( node.type == ntFunctionCall ):
+		pass
+	elif ( node.type == ntArguments ):
+		pass
+	elif ( node.type == ntParameters ):
+		pass
+
 	else:
 		print ( "Trapped exception")
+		sys.exit ( 0 )
 def printtree ( expr ):
 	if (expr.leaf != None ):
 		print ( "%s: %s Line: %d" % ( expr.type, expr.leaf, expr.linenumber ) )

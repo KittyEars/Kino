@@ -33,7 +33,8 @@ def p_line_expr(t):
 			| control'''
 	t[0] = kino_compile.Tree_Node ( kino_compile.ntLine, None, t[1], t.lexer.lineno )
 def p_declaration(t):
-	'''declaration : INT IDENTIFIER EQ expression'''
+	'''declaration : INT IDENTIFIER EQ expression
+						| INT IDENTIFIER'''
 	t[0] = kino_compile.Tree_Node ( kino_compile.ntDeclaration, [t[1], t[4]], t[2], t.lexer.lineno )
 
 def p_assignment(t):
@@ -73,9 +74,30 @@ def p_loop ( t ):
 	'''loop : WHILE LPAREN expression RPAREN LBRACE program RBRACE'''
 	t[0] = kino_compile.Tree_Node ( kino_compile.ntLoop, [t[6]], t[3], t.lexer.lineno )
 	
+def p_function_decl ( t ):
+	'''function_decl : INT IDENTIFIER LPAREN parameters RPAREN LBRACE program RBRACE'''
+	t[0] = kino_compile.Tree_Node ( kino_compile.ntFunctionDecl, [t[4], t[7]], t[2], t.lexer.lineno  )
 
+def p_function_call ( t ):
+	'''expression : IDENTIFIER LPAREN arguments RPAREN'''
+	t[0] = kino_compile.Tree_Node ( kino_compile.ntFunctionCall, [t[3]], t[1], t.lexer.lineno )
 
-	
+def p_parameters ( t ):
+	'''parameters : declaration 
+						| declaration parameters'''
+	if ( len ( t ) == 2 ):
+		t[0] = kino_compile.Tree_Node ( kino_compile.ntParameters, None, t[1], t.lexer.lineno )
+	else:
+		t[0] = kino_compile.Tree_Node ( kino_compile.ntParameters, [t[2]], t[1], t.lexer.lineno )
+		
+def p_arguments ( t ):
+	'''arguments : expression
+						| expression arguments'''
+	if ( len ( t ) == 2 ):
+		t[0] = kino_compile.Tree_Node ( kino_compile.ntArguments, None, t[1], t.lexer.lineno )
+	else:
+		t[0] = kino_compile.Tree_Node ( kino_compile.ntArguments, [t[2]], t[1], t.lexer.lineno )
+		
 def main_func():
 	parser = yacc.yacc()
 	s = ""

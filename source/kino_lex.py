@@ -13,13 +13,13 @@ keyword_lookup = { 'if' : 'IF', 'else' : 'ELSE', 'while' : 'WHILE', 'int' : 'INT
 t_PLUS    	 = r'\+'
 t_MINUS   	 = r'-'
 t_MULT    	 = r'\*'
-t_EQ			 = r'='
+t_EQ		 = r'='
 t_EQV 	 	 = r'=='
-t_LBRACE	 	 = r'\{'
-t_RBRACE	 	 = r'\}'
+t_LBRACE	 = r'\{'
+t_RBRACE	 = r'\}'
 t_LPAREN  	 = r'\('
 t_RPAREN  	 = r'\)'
-t_SEMICOLON = r';'
+t_SEMICOLON      = r';'
 t_ignore 	 = " \t"
 
 
