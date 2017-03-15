@@ -3,23 +3,24 @@ import ply.yacc as yacc
 import sys
 import ply.lex as lex
 import re
-tokens = ( 'WORD', 'IDENTIFIER', 'SEMICOLON', 'NUMBER', 'IF', 'ELSE', 'WHILE', 'INT', 'STRING', 'PLUS', 'MINUS', 'MULT', 'EQV', 'EQ', 'LBRACE', 'RBRACE', 'LPAREN', 'RPAREN' )
+tokens = ( 'WORD', 'IDENTIFIER', 'DEREF', 'SEMICOLON', 'NUMBER', 'IF', 'ELSE', 'WHILE', 'INT', 'STRING', 'PLUS', 'MINUS', 'MULT', 'EQV', 'NEQV', 'EQ', 'LBRACE', 'RBRACE', 'LPAREN', 'RPAREN' )
 
 keywords = ( 'if', 'else', 'while', 'int', 'string', 'eqv'  )
 
 keyword_lookup = { 'if' : 'IF', 'else' : 'ELSE', 'while' : 'WHILE', 'int' : 'INT', 'string' : 'STRING' }
 
-
+t_DEREF		 = r'\&'
 t_PLUS    	 = r'\+'
 t_MINUS   	 = r'-'
 t_MULT    	 = r'\*'
 t_EQ		 = r'='
 t_EQV 	 	 = r'=='
+t_NEQV		 = r'!='
 t_LBRACE	 = r'\{'
 t_RBRACE	 = r'\}'
 t_LPAREN  	 = r'\('
 t_RPAREN  	 = r'\)'
-t_SEMICOLON      = r';'
+t_SEMICOLON  = r';'
 t_ignore 	 = " \t"
 
 
@@ -59,3 +60,10 @@ def t_error(t):
 	
 lexer = lex.lex()
 
+precedence = (
+    ('left', 'PLUS', 'MINUS'),
+    ('left', 'MULT', 'EQ' ),
+	('left', 'LBRACE', 'LPAREN' ),
+	('left', 'IDENTIFIER' ),
+	('right', 'DEREF' )
+)

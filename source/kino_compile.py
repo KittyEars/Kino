@@ -1,5 +1,6 @@
 import kino_env
 import sys
+import operator #thats not the way it feels
 ntControl = 'Control'
 ntPrimative = 'Primative'
 ntPrimative_op = 'Primative_op'
@@ -27,7 +28,10 @@ class Tree_Node:
 		else:
 			self.children = [ ]
 		self.leaf = leaf
-		
+primative_op_dict = { "+" : operator.add, "-" : operator.sub, 
+					  "*" : operator.mul, "==" : operator.xor, 
+					  "!=" : operator.sub }
+					  
 def compile ( node, env, stackcount ):
 	global label_count
 	if ( node.type == ntPrimative ):
@@ -35,29 +39,39 @@ def compile ( node, env, stackcount ):
 		rval = compile ( node.children[0], env, stackcount+4 )
 		lval = compile ( node.children[1], env, stackcount+8 )
 		
-		#right side
-		if ( rval[0] == ntPrimative ):
-			print ( 'lw $v0, %s($zero)' % str(stackcount+4) )
-		elif ( rval[0] == ntNumber ):
-			print ( 'addi $v0, $zero, %s' % str(rval[1]) )
-		elif ( rval[0] == ntIdentifier ):
-			print ( 'lw $v0, %s($zero)' % str(rval[1]) )
-		
-		#left side
-		if ( lval[0] == ntPrimative ):
-			print ( 'lw $v1, %s($zero)' % str(stackcount+8))
-		elif ( lval[0] == ntNumber ):
-			print ( 'addi $v1, $zero, %s' % str(lval[1]))
-		elif ( lval[0] == ntIdentifier ):
-			print ( 'lw $v1, %s($zero)' % str(lval[1]))
-		
-		if ( node.leaf.leaf == '+' ):
-			print ( 'add $v0, $v0, $v1' )
-		elif ( node.leaf.leaf == '-' ):
-			print ( 'sub $v0, $v0, $v1' )
-		
-		print ( 'sw $v0, %s($zero)' % stackcount )
-		return [ ntPrimative, stackcount]
+		if ( rval[0] == ntNumber and lval[0] == ntNumber ):
+			return [ ntNumber, primative_op_dict[node.leaf.leaf](rval[1], lval[1]) ]
+		else:
+			#right side
+			if ( rval[0] == ntPrimative ):
+				print ( 'lw $v0, %s($zero)' % str(stackcount+4) )
+			elif ( rval[0] == ntNumber ):
+				print ( 'addi $v0, $zero, %s' % str(rval[1]) )
+			elif ( rval[0] == ntIdentifier ):
+				print ( 'lw $v0, %s($zero)' % str(rval[1]) )
+			
+			#left side
+			if ( lval[0] == ntPrimative ):
+				print ( 'lw $v1, %s($zero)' % str(stackcount+8))
+			elif ( lval[0] == ntNumber ):
+				print ( 'addi $v1, $zero, %s' % str(lval[1]))
+			elif ( lval[0] == ntIdentifier ):
+				print ( 'lw $v1, %s($zero)' % str(lval[1]))
+			
+			if ( node.leaf.leaf == '+' ):
+				print ( 'add $v0, $v0, $v1' )
+			elif ( node.leaf.leaf == '-' ):
+				print ( 'sub $v0, $v0, $v1' )
+			elif ( node.leaf.leaf == '==' ):
+				#todo: This isn't the safest way to do eqv 
+				#but it will work for now
+				print ( 'xor $v0, $v0, $v1' )
+			elif ( node.leaf.leaf == '!=' ):
+				#todo: again not the safest way, but given the 
+				#number of opcodes and speed this is the best option
+				print ( 'sub $v0, $v0, $v1' )
+			print ( 'sw $v0, %s($zero)' % stackcount )
+			return [ ntPrimative, stackcount]
 
 	elif ( node.type == ntPrimative_op ):
 		pass
@@ -155,10 +169,13 @@ def compile ( node, env, stackcount ):
 	
 	elif ( node.type == ntFunctionDecl ):
 		pass
+		
 	elif ( node.type == ntFunctionCall ):
 		pass
+		
 	elif ( node.type == ntArguments ):
 		pass
+		
 	elif ( node.type == ntParameters ):
 		pass
 

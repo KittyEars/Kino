@@ -1,0 +1,31 @@
+.text
+addi $v0, $zero, 7
+sw $v0, 16($zero)
+addi $v0, $zero, 0
+sw $v0, 20($zero)
+addi $v0, $zero, 5
+sw $v0, 16($zero)
+label0:
+lw $v0, 16($zero)
+addi $v1, $zero, 0
+sub $v0, $v0, $v1
+sw $v0, 24($zero)
+lw $v0, 24($zero)
+addi $v1, $zero, 0
+beq $v1, $v0, label1
+lw $v0, 16($zero)
+addi $v1, $zero, 1
+sub $v0, $v0, $v1
+sw $v0, 24($zero)
+lw $v0, 24($zero)
+sw $v0, 16($zero)
+lw $v0, 20($zero)
+addi $v1, $zero, 1
+add $v0, $v0, $v1
+sw $v0, 24($zero)
+lw $v0, 24($zero)
+sw $v0, 20($zero)
+j label0
+label1:
+lw $v0, 20($zero)
+sw $v0, 16($zero)

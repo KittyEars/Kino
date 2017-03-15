@@ -26,7 +26,7 @@ def p_program_expr(t):
 		t[0] = kino_compile.Tree_Node ( kino_compile.ntProgram, None, t[1], t.lexer.lineno )
 	else:
 		t[0] = kino_compile.Tree_Node ( kino_compile.ntProgram, [t[2]], t[1], t.lexer.lineno )
-	
+
 def p_line_expr(t):
 	'''line : declaration
 			| assignment
@@ -38,18 +38,27 @@ def p_declaration(t):
 	t[0] = kino_compile.Tree_Node ( kino_compile.ntDeclaration, [t[1], t[4]], t[2], t.lexer.lineno )
 
 def p_assignment(t):
-	'''assignment : IDENTIFIER EQ expression'''
+	'''assignment : IDENTIFIER EQ expression '''
 	t[0] = kino_compile.Tree_Node ( kino_compile.ntAssignment, [t[3]], t[1], t.lexer.lineno )
 
-def p_primative_op(t):
+def p_primative(t):
 	'''expression : expression primative_op expression'''
 	t[0] = kino_compile.Tree_Node ( kino_compile.ntPrimative, [t[1], t[3]], t[2], t.lexer.lineno )
 
-def p_primative(t):
+def p_primative_unary(t):
+	'''expression : unary_op expression'''
+	t[0] = kino_compile.Tree_Node ( kino_compile.ntUnaryPrimative, [t[2]], t[1], t.lexer.lineno )
+	
+def p_primative_unary_op(t):
+	'''unary_op : DEREF'''
+	t[0] = kino_compile.Tree_Node ( kino_compile.ntUnaryPrimative_op, None, t[1], t.lexer.lineno )
+
+def p_primative_op(t):
 	'''primative_op : PLUS
 				 | MINUS
 				 | MULT
-				 | EQV'''
+				 | EQV
+				 | NEQV'''
 	t[0] = kino_compile.Tree_Node ( kino_compile.ntPrimative_op, None, t[1], t.lexer.lineno )
 	
 def p_expression_number(t):
