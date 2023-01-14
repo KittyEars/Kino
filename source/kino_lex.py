@@ -1,18 +1,22 @@
-import operator
+import operator #that's not way it feels
 import ply.yacc as yacc
 import sys
 import ply.lex as lex
 import re
-tokens = ( 'WORD', 'IDENTIFIER', 'DEREF', 'SEMICOLON', 'NUMBER', 'IF', 'ELSE', 'WHILE', 'INT', 'STRING', 'PLUS', 'MINUS', 'MULT', 'EQV', 'NEQV', 'EQ', 'LBRACE', 'RBRACE', 'LPAREN', 'RPAREN' )
+tokens = ( 'WORD', 'IDENTIFIER', 'DEREF', 'SEMICOLON', 'NUMBER', 'IF', 'ELSE', 
+			'WHILE', 'INT', 'LEDR', 'LEDG', 'SWITCH', 'ADDR', 'STRING', 'PLUS', 'MINUS', 'MULT', 'OR', 'AND', 'EQV', 'NEQV', 
+			'EQ', 'LBRACE', 'RBRACE', 'LPAREN', 'RPAREN', 'WAIT', 'COMMENT' )
 
-keywords = ( 'if', 'else', 'while', 'int', 'string', 'eqv'  )
+keywords = ( 'if', 'else', 'while', 'int', 'ledr', 'switch', 'ledg', 'addr', 'string', 'eqv', 'wait'  )
 
-keyword_lookup = { 'if' : 'IF', 'else' : 'ELSE', 'while' : 'WHILE', 'int' : 'INT', 'string' : 'STRING' }
+keyword_lookup = { 'if' : 'IF', 'else' : 'ELSE', 'while' : 'WHILE', 'int' : 'INT', 'ledr' : 'LEDR', 'ledg' : 'LEDG', 'switch': 'SWITCH', 'addr' : 'ADDR', 'string' : 'STRING', 'wait' : 'WAIT' }
 
 t_DEREF		 = r'\&'
 t_PLUS    	 = r'\+'
 t_MINUS   	 = r'-'
 t_MULT    	 = r'\*'
+t_OR		 = r'\|'
+t_AND 		 = r'\&'
 t_EQ		 = r'='
 t_EQV 	 	 = r'=='
 t_NEQV		 = r'!='
@@ -23,6 +27,9 @@ t_RPAREN  	 = r'\)'
 t_SEMICOLON  = r';'
 t_ignore 	 = " \t"
 
+def t_COMMENT(t):
+    r'//.+'
+    pass
 
 def t_WORD (t):
 	r'[A-Za-z_][A-Za-z_0-9]*'

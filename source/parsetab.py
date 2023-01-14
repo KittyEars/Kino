@@ -5,9 +5,9 @@ _tabversion = '3.8'
 
 _lr_method = 'LALR'
 
-_lr_signature = '0D576B2246DDF95F454EA0C4BEB6A6F6'
+_lr_signature = '942A0432E5AB329A9734EEF13FC269A5'
     
-_lr_action_items = {'INT':([0,3,4,5,6,9,10,14,19,20,22,26,34,39,40,41,42,46,49,51,],[7,7,-4,-5,-6,-20,-21,-8,-19,-9,-18,-7,-11,-10,7,7,-25,-23,7,-22,]),'IDENTIFIER':([0,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,23,26,27,28,29,30,31,32,33,34,38,39,40,41,42,46,49,51,],[8,8,-4,-5,-6,14,-20,-21,-8,19,19,19,19,-19,-9,19,-18,-12,-7,19,19,-13,-14,-15,-16,-17,-11,19,-10,8,8,-25,-23,8,-22,]),'WHILE':([0,3,4,5,6,9,10,14,19,20,22,26,34,39,40,41,42,46,49,51,],[11,11,-4,-5,-6,-20,-21,-8,-19,-9,-18,-7,-11,-10,11,11,-25,-23,11,-22,]),'IF':([0,3,4,5,6,9,10,14,19,20,22,26,34,39,40,41,42,46,49,51,],[12,12,-4,-5,-6,-20,-21,-8,-19,-9,-18,-7,-11,-10,12,12,-25,-23,12,-22,]),'$end':([1,2,3,4,5,6,9,10,13,14,19,20,22,26,34,39,42,46,51,],[0,-1,-2,-4,-5,-6,-20,-21,-3,-8,-19,-9,-18,-7,-11,-10,-25,-23,-22,]),'RBRACE':([3,4,5,6,9,10,13,14,19,20,22,26,34,39,42,44,45,46,50,51,],[-2,-4,-5,-6,-20,-21,-3,-8,-19,-9,-18,-7,-11,-10,-25,46,47,-23,51,-22,]),'EQ':([8,14,],[15,18,]),'LPAREN':([11,12,19,],[16,17,27,]),'NUMBER':([15,16,17,18,19,21,22,23,27,28,29,30,31,32,33,34,38,39,42,],[22,22,22,22,-19,22,-18,-12,22,22,-13,-14,-15,-16,-17,-11,22,-10,-25,]),'DEREF':([15,16,17,18,19,21,22,23,27,28,29,30,31,32,33,34,38,39,42,],[23,23,23,23,-19,23,-18,-12,23,23,-13,-14,-15,-16,-17,-11,23,-10,-25,]),'PLUS':([19,20,22,24,25,26,34,38,39,42,],[-19,29,-18,29,29,29,29,29,29,-25,]),'MINUS':([19,20,22,24,25,26,34,38,39,42,],[-19,30,-18,30,30,30,30,30,30,-25,]),'MULT':([19,20,22,24,25,26,34,38,39,42,],[-19,31,-18,31,31,31,31,31,31,-25,]),'EQV':([19,20,22,24,25,26,34,38,39,42,],[-19,32,-18,32,32,32,32,32,32,-25,]),'NEQV':([19,20,22,24,25,26,34,38,39,42,],[-19,33,-18,33,33,33,33,33,33,-25,]),'RPAREN':([19,22,24,25,34,37,38,39,42,43,],[-19,-18,35,36,-11,42,-28,-10,-25,-29,]),'LBRACE':([35,36,48,],[40,41,49,]),'ELSE':([47,],[48,]),}
+_lr_action_items = {'IDENTIFIER':([0,3,4,5,6,7,8,10,11,13,14,15,16,20,21,23,24,25,26,27,28,29,30,34,35,36,37,38,39,40,41,42,43,44,47,48,49,52,55,57,],[9,9,-4,-5,-6,-7,20,-23,-24,-28,-29,-30,-31,-9,26,26,26,26,-22,-10,26,-21,-13,-8,26,-14,-15,-16,-17,-18,-19,-20,-12,-27,-11,9,9,-26,9,-25,]),'WAIT':([0,3,4,5,6,7,10,11,20,26,27,29,34,43,44,47,48,49,52,55,57,],[12,12,-4,-5,-6,-7,-23,-24,-9,-22,-10,-21,-8,-12,-27,-11,12,12,-26,12,-25,]),'INT':([0,3,4,5,6,7,10,11,20,26,27,29,34,43,44,47,48,49,52,55,57,],[13,13,-4,-5,-6,-7,-23,-24,-9,-22,-10,-21,-8,-12,-27,-11,13,13,-26,13,-25,]),'LEDR':([0,3,4,5,6,7,10,11,20,26,27,29,34,43,44,47,48,49,52,55,57,],[14,14,-4,-5,-6,-7,-23,-24,-9,-22,-10,-21,-8,-12,-27,-11,14,14,-26,14,-25,]),'LEDG':([0,3,4,5,6,7,10,11,20,26,27,29,34,43,44,47,48,49,52,55,57,],[15,15,-4,-5,-6,-7,-23,-24,-9,-22,-10,-21,-8,-12,-27,-11,15,15,-26,15,-25,]),'SWITCH':([0,3,4,5,6,7,10,11,20,26,27,29,34,43,44,47,48,49,52,55,57,],[16,16,-4,-5,-6,-7,-23,-24,-9,-22,-10,-21,-8,-12,-27,-11,16,16,-26,16,-25,]),'WHILE':([0,3,4,5,6,7,10,11,20,26,27,29,34,43,44,47,48,49,52,55,57,],[17,17,-4,-5,-6,-7,-23,-24,-9,-22,-10,-21,-8,-12,-27,-11,17,17,-26,17,-25,]),'IF':([0,3,4,5,6,7,10,11,20,26,27,29,34,43,44,47,48,49,52,55,57,],[18,18,-4,-5,-6,-7,-23,-24,-9,-22,-10,-21,-8,-12,-27,-11,18,18,-26,18,-25,]),'$end':([1,2,3,4,5,6,7,10,11,19,20,26,27,29,34,43,44,47,52,57,],[0,-1,-2,-4,-5,-6,-7,-23,-24,-3,-9,-22,-10,-21,-8,-12,-27,-11,-26,-25,]),'RBRACE':([3,4,5,6,7,10,11,19,20,26,27,29,34,43,44,47,50,51,52,56,57,],[-2,-4,-5,-6,-7,-23,-24,-3,-9,-22,-10,-21,-8,-12,-27,-11,52,53,-26,57,-25,]),'EQ':([9,20,],[21,25,]),'LPAREN':([12,17,18,],[22,23,24,]),'NUMBER':([21,22,23,24,25,28,30,35,36,37,38,39,40,41,42,],[29,31,29,29,29,29,-13,29,-14,-15,-16,-17,-18,-19,-20,]),'DEREF':([21,23,24,25,28,30,35,36,37,38,39,40,41,42,],[30,30,30,30,30,-13,30,-14,-15,-16,-17,-18,-19,-20,]),'PLUS':([26,27,29,32,33,34,43,47,],[-22,36,-21,36,36,36,36,36,]),'MINUS':([26,27,29,32,33,34,43,47,],[-22,37,-21,37,37,37,37,37,]),'MULT':([26,27,29,32,33,34,43,47,],[-22,38,-21,38,38,38,38,38,]),'EQV':([26,27,29,32,33,34,43,47,],[-22,39,-21,39,39,39,39,39,]),'OR':([26,27,29,32,33,34,43,47,],[-22,40,-21,40,40,40,40,40,]),'AND':([26,27,29,32,33,34,43,47,],[-22,41,-21,41,41,41,41,41,]),'NEQV':([26,27,29,32,33,34,43,47,],[-22,42,-21,42,42,42,42,42,]),'RPAREN':([26,29,31,32,33,43,47,],[-22,-21,44,45,46,-12,-11,]),'LBRACE':([45,46,54,],[48,49,55,]),'ELSE':([53,],[54,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'file':([0,],[1,]),'program':([0,3,40,41,49,],[2,13,44,45,50,]),'line':([0,3,40,41,49,],[3,3,3,3,3,]),'declaration':([0,3,40,41,49,],[4,4,4,4,4,]),'assignment':([0,3,40,41,49,],[5,5,5,5,5,]),'control':([0,3,40,41,49,],[6,6,6,6,6,]),'loop':([0,3,40,41,49,],[9,9,9,9,9,]),'conditional':([0,3,40,41,49,],[10,10,10,10,10,]),'expression':([15,16,17,18,21,27,28,38,],[20,24,25,26,34,38,39,38,]),'unary_op':([15,16,17,18,21,27,28,38,],[21,21,21,21,21,21,21,21,]),'primative_op':([20,24,25,26,34,38,39,],[28,28,28,28,28,28,28,]),'arguments':([27,38,],[37,43,]),}
+_lr_goto_items = {'file':([0,],[1,]),'program':([0,3,48,49,55,],[2,19,50,51,56,]),'line':([0,3,48,49,55,],[3,3,3,3,3,]),'declaration':([0,3,48,49,55,],[4,4,4,4,4,]),'assignment':([0,3,48,49,55,],[5,5,5,5,5,]),'control':([0,3,48,49,55,],[6,6,6,6,6,]),'wait':([0,3,48,49,55,],[7,7,7,7,7,]),'type':([0,3,48,49,55,],[8,8,8,8,8,]),'loop':([0,3,48,49,55,],[10,10,10,10,10,]),'conditional':([0,3,48,49,55,],[11,11,11,11,11,]),'expression':([21,23,24,25,28,35,],[27,32,33,34,43,47,]),'unary_op':([21,23,24,25,28,35,],[28,28,28,28,28,28,]),'primative_op':([27,32,33,34,43,47,],[35,35,35,35,35,35,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -32,27 +32,33 @@ _lr_productions = [
   ('line -> declaration','line',1,'p_line_expr','kino_parse.py',31),
   ('line -> assignment','line',1,'p_line_expr','kino_parse.py',32),
   ('line -> control','line',1,'p_line_expr','kino_parse.py',33),
-  ('declaration -> INT IDENTIFIER EQ expression','declaration',4,'p_declaration','kino_parse.py',36),
-  ('declaration -> INT IDENTIFIER','declaration',2,'p_declaration','kino_parse.py',37),
-  ('assignment -> IDENTIFIER EQ expression','assignment',3,'p_assignment','kino_parse.py',41),
-  ('expression -> expression primative_op expression','expression',3,'p_primative','kino_parse.py',45),
-  ('expression -> unary_op expression','expression',2,'p_primative_unary','kino_parse.py',49),
-  ('unary_op -> DEREF','unary_op',1,'p_primative_unary_op','kino_parse.py',53),
-  ('primative_op -> PLUS','primative_op',1,'p_primative_op','kino_parse.py',57),
-  ('primative_op -> MINUS','primative_op',1,'p_primative_op','kino_parse.py',58),
-  ('primative_op -> MULT','primative_op',1,'p_primative_op','kino_parse.py',59),
-  ('primative_op -> EQV','primative_op',1,'p_primative_op','kino_parse.py',60),
-  ('primative_op -> NEQV','primative_op',1,'p_primative_op','kino_parse.py',61),
-  ('expression -> NUMBER','expression',1,'p_expression_number','kino_parse.py',65),
-  ('expression -> IDENTIFIER','expression',1,'p_expression_identifier','kino_parse.py',69),
-  ('control -> loop','control',1,'p_control','kino_parse.py',74),
-  ('control -> conditional','control',1,'p_control','kino_parse.py',75),
-  ('conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE','conditional',11,'p_conditional','kino_parse.py',79),
-  ('loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE','loop',7,'p_loop','kino_parse.py',83),
-  ('function_decl -> INT IDENTIFIER LPAREN parameters RPAREN LBRACE program RBRACE','function_decl',8,'p_function_decl','kino_parse.py',87),
-  ('expression -> IDENTIFIER LPAREN arguments RPAREN','expression',4,'p_function_call','kino_parse.py',91),
-  ('parameters -> declaration','parameters',1,'p_parameters','kino_parse.py',95),
-  ('parameters -> declaration parameters','parameters',2,'p_parameters','kino_parse.py',96),
-  ('arguments -> expression','arguments',1,'p_arguments','kino_parse.py',103),
-  ('arguments -> expression arguments','arguments',2,'p_arguments','kino_parse.py',104),
+  ('line -> wait','line',1,'p_line_expr','kino_parse.py',34),
+  ('declaration -> type IDENTIFIER EQ expression','declaration',4,'p_declaration','kino_parse.py',39),
+  ('declaration -> type IDENTIFIER','declaration',2,'p_declaration','kino_parse.py',40),
+  ('assignment -> IDENTIFIER EQ expression','assignment',3,'p_assignment','kino_parse.py',44),
+  ('expression -> expression primative_op expression','expression',3,'p_primative','kino_parse.py',48),
+  ('expression -> unary_op expression','expression',2,'p_primative_unary','kino_parse.py',52),
+  ('unary_op -> DEREF','unary_op',1,'p_primative_unary_op','kino_parse.py',56),
+  ('primative_op -> PLUS','primative_op',1,'p_primative_op','kino_parse.py',60),
+  ('primative_op -> MINUS','primative_op',1,'p_primative_op','kino_parse.py',61),
+  ('primative_op -> MULT','primative_op',1,'p_primative_op','kino_parse.py',62),
+  ('primative_op -> EQV','primative_op',1,'p_primative_op','kino_parse.py',63),
+  ('primative_op -> OR','primative_op',1,'p_primative_op','kino_parse.py',64),
+  ('primative_op -> AND','primative_op',1,'p_primative_op','kino_parse.py',65),
+  ('primative_op -> NEQV','primative_op',1,'p_primative_op','kino_parse.py',66),
+  ('expression -> NUMBER','expression',1,'p_expression_number','kino_parse.py',70),
+  ('expression -> IDENTIFIER','expression',1,'p_expression_identifier','kino_parse.py',74),
+  ('control -> loop','control',1,'p_control','kino_parse.py',79),
+  ('control -> conditional','control',1,'p_control','kino_parse.py',80),
+  ('conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE','conditional',11,'p_conditional','kino_parse.py',84),
+  ('loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE','loop',7,'p_loop','kino_parse.py',88),
+  ('wait -> WAIT LPAREN NUMBER RPAREN','wait',4,'p_wait_primative','kino_parse.py',93),
+  ('type -> INT','type',1,'p_type_','kino_parse.py',97),
+  ('type -> LEDR','type',1,'p_type_','kino_parse.py',98),
+  ('type -> LEDG','type',1,'p_type_','kino_parse.py',99),
+  ('type -> SWITCH','type',1,'p_type_','kino_parse.py',100),
+  ('parameters -> declaration','parameters',1,'p_parameters','kino_parse.py',104),
+  ('parameters -> declaration parameters','parameters',2,'p_parameters','kino_parse.py',105),
+  ('arguments -> expression','arguments',1,'p_arguments','kino_parse.py',112),
+  ('arguments -> expression arguments','arguments',2,'p_arguments','kino_parse.py',113),
 ]

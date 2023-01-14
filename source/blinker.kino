@@ -1,0 +1,25 @@
+//define red led
+ledr red = 0
+
+//define a
+int a = 0
+
+//loop forever
+while (1)
+{
+   //if a hasn't reached 5, add 1
+   if ( a != 5 )
+   {
+      a = a + 1
+   }
+   else
+   {
+      //else reset
+      a = 0
+   }
+   //assign to the red leds
+   red = a
+   //wait a sec
+   wait(1)
+}
+

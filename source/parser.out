@@ -1,1 +1,1059 @@
 Created by PLY version 3.9 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    WORD
+    SEMICOLON
+    ADDR
+    STRING
+    COMMENT
+
+Grammar
+
+Rule 0     S' -> file
+Rule 1     file -> program
+Rule 2     program -> line
+Rule 3     program -> line program
+Rule 4     line -> declaration
+Rule 5     line -> assignment
+Rule 6     line -> control
+Rule 7     line -> wait
+Rule 8     declaration -> type IDENTIFIER EQ expression
+Rule 9     declaration -> type IDENTIFIER
+Rule 10    assignment -> IDENTIFIER EQ expression
+Rule 11    expression -> expression primative_op expression
+Rule 12    expression -> unary_op expression
+Rule 13    unary_op -> DEREF
+Rule 14    primative_op -> PLUS
+Rule 15    primative_op -> MINUS
+Rule 16    primative_op -> MULT
+Rule 17    primative_op -> EQV
+Rule 18    primative_op -> OR
+Rule 19    primative_op -> AND
+Rule 20    primative_op -> NEQV
+Rule 21    expression -> NUMBER
+Rule 22    expression -> IDENTIFIER
+Rule 23    control -> loop
+Rule 24    control -> conditional
+Rule 25    conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+Rule 26    loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE
+Rule 27    wait -> WAIT LPAREN NUMBER RPAREN
+Rule 28    type -> INT
+Rule 29    type -> LEDR
+Rule 30    type -> LEDG
+Rule 31    type -> SWITCH
+Rule 32    parameters -> declaration
+Rule 33    parameters -> declaration parameters
+Rule 34    arguments -> expression
+Rule 35    arguments -> expression arguments
+
+Terminals, with rules where they appear
+
+ADDR                 : 
+AND                  : 19
+COMMENT              : 
+DEREF                : 13
+ELSE                 : 25
+EQ                   : 8 10
+EQV                  : 17
+IDENTIFIER           : 8 9 10 22
+IF                   : 25
+INT                  : 28
+LBRACE               : 25 25 26
+LEDG                 : 30
+LEDR                 : 29
+LPAREN               : 25 26 27
+MINUS                : 15
+MULT                 : 16
+NEQV                 : 20
+NUMBER               : 21 27
+OR                   : 18
+PLUS                 : 14
+RBRACE               : 25 25 26
+RPAREN               : 25 26 27
+SEMICOLON            : 
+STRING               : 
+SWITCH               : 31
+WAIT                 : 27
+WHILE                : 26
+WORD                 : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+arguments            : 35
+assignment           : 5
+conditional          : 24
+control              : 6
+declaration          : 4 32 33
+expression           : 8 10 11 11 12 25 26 34 35
+file                 : 0
+line                 : 2 3
+loop                 : 23
+parameters           : 33
+primative_op         : 11
+program              : 1 3 25 25 26
+type                 : 8 9
+unary_op             : 12
+wait                 : 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . file
+    (1) file -> . program
+    (2) program -> . line
+    (3) program -> . line program
+    (4) line -> . declaration
+    (5) line -> . assignment
+    (6) line -> . control
+    (7) line -> . wait
+    (8) declaration -> . type IDENTIFIER EQ expression
+    (9) declaration -> . type IDENTIFIER
+    (10) assignment -> . IDENTIFIER EQ expression
+    (23) control -> . loop
+    (24) control -> . conditional
+    (27) wait -> . WAIT LPAREN NUMBER RPAREN
+    (28) type -> . INT
+    (29) type -> . LEDR
+    (30) type -> . LEDG
+    (31) type -> . SWITCH
+    (26) loop -> . WHILE LPAREN expression RPAREN LBRACE program RBRACE
+    (25) conditional -> . IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+
+    IDENTIFIER      shift and go to state 9
+    WAIT            shift and go to state 12
+    INT             shift and go to state 13
+    LEDR            shift and go to state 14
+    LEDG            shift and go to state 15
+    SWITCH          shift and go to state 16
+    WHILE           shift and go to state 17
+    IF              shift and go to state 18
+
+    file                           shift and go to state 1
+    program                        shift and go to state 2
+    line                           shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    control                        shift and go to state 6
+    wait                           shift and go to state 7
+    type                           shift and go to state 8
+    loop                           shift and go to state 10
+    conditional                    shift and go to state 11
+
+state 1
+
+    (0) S' -> file .
+
+
+
+state 2
+
+    (1) file -> program .
+
+    $end            reduce using rule 1 (file -> program .)
+
+
+state 3
+
+    (2) program -> line .
+    (3) program -> line . program
+    (2) program -> . line
+    (3) program -> . line program
+    (4) line -> . declaration
+    (5) line -> . assignment
+    (6) line -> . control
+    (7) line -> . wait
+    (8) declaration -> . type IDENTIFIER EQ expression
+    (9) declaration -> . type IDENTIFIER
+    (10) assignment -> . IDENTIFIER EQ expression
+    (23) control -> . loop
+    (24) control -> . conditional
+    (27) wait -> . WAIT LPAREN NUMBER RPAREN
+    (28) type -> . INT
+    (29) type -> . LEDR
+    (30) type -> . LEDG
+    (31) type -> . SWITCH
+    (26) loop -> . WHILE LPAREN expression RPAREN LBRACE program RBRACE
+    (25) conditional -> . IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+
+    $end            reduce using rule 2 (program -> line .)
+    RBRACE          reduce using rule 2 (program -> line .)
+    IDENTIFIER      shift and go to state 9
+    WAIT            shift and go to state 12
+    INT             shift and go to state 13
+    LEDR            shift and go to state 14
+    LEDG            shift and go to state 15
+    SWITCH          shift and go to state 16
+    WHILE           shift and go to state 17
+    IF              shift and go to state 18
+
+    line                           shift and go to state 3
+    program                        shift and go to state 19
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    control                        shift and go to state 6
+    wait                           shift and go to state 7
+    type                           shift and go to state 8
+    loop                           shift and go to state 10
+    conditional                    shift and go to state 11
+
+state 4
+
+    (4) line -> declaration .
+
+    IDENTIFIER      reduce using rule 4 (line -> declaration .)
+    WAIT            reduce using rule 4 (line -> declaration .)
+    INT             reduce using rule 4 (line -> declaration .)
+    LEDR            reduce using rule 4 (line -> declaration .)
+    LEDG            reduce using rule 4 (line -> declaration .)
+    SWITCH          reduce using rule 4 (line -> declaration .)
+    WHILE           reduce using rule 4 (line -> declaration .)
+    IF              reduce using rule 4 (line -> declaration .)
+    $end            reduce using rule 4 (line -> declaration .)
+    RBRACE          reduce using rule 4 (line -> declaration .)
+
+
+state 5
+
+    (5) line -> assignment .
+
+    IDENTIFIER      reduce using rule 5 (line -> assignment .)
+    WAIT            reduce using rule 5 (line -> assignment .)
+    INT             reduce using rule 5 (line -> assignment .)
+    LEDR            reduce using rule 5 (line -> assignment .)
+    LEDG            reduce using rule 5 (line -> assignment .)
+    SWITCH          reduce using rule 5 (line -> assignment .)
+    WHILE           reduce using rule 5 (line -> assignment .)
+    IF              reduce using rule 5 (line -> assignment .)
+    $end            reduce using rule 5 (line -> assignment .)
+    RBRACE          reduce using rule 5 (line -> assignment .)
+
+
+state 6
+
+    (6) line -> control .
+
+    IDENTIFIER      reduce using rule 6 (line -> control .)
+    WAIT            reduce using rule 6 (line -> control .)
+    INT             reduce using rule 6 (line -> control .)
+    LEDR            reduce using rule 6 (line -> control .)
+    LEDG            reduce using rule 6 (line -> control .)
+    SWITCH          reduce using rule 6 (line -> control .)
+    WHILE           reduce using rule 6 (line -> control .)
+    IF              reduce using rule 6 (line -> control .)
+    $end            reduce using rule 6 (line -> control .)
+    RBRACE          reduce using rule 6 (line -> control .)
+
+
+state 7
+
+    (7) line -> wait .
+
+    IDENTIFIER      reduce using rule 7 (line -> wait .)
+    WAIT            reduce using rule 7 (line -> wait .)
+    INT             reduce using rule 7 (line -> wait .)
+    LEDR            reduce using rule 7 (line -> wait .)
+    LEDG            reduce using rule 7 (line -> wait .)
+    SWITCH          reduce using rule 7 (line -> wait .)
+    WHILE           reduce using rule 7 (line -> wait .)
+    IF              reduce using rule 7 (line -> wait .)
+    $end            reduce using rule 7 (line -> wait .)
+    RBRACE          reduce using rule 7 (line -> wait .)
+
+
+state 8
+
+    (8) declaration -> type . IDENTIFIER EQ expression
+    (9) declaration -> type . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 20
+
+
+state 9
+
+    (10) assignment -> IDENTIFIER . EQ expression
+
+    EQ              shift and go to state 21
+
+
+state 10
+
+    (23) control -> loop .
+
+    IDENTIFIER      reduce using rule 23 (control -> loop .)
+    WAIT            reduce using rule 23 (control -> loop .)
+    INT             reduce using rule 23 (control -> loop .)
+    LEDR            reduce using rule 23 (control -> loop .)
+    LEDG            reduce using rule 23 (control -> loop .)
+    SWITCH          reduce using rule 23 (control -> loop .)
+    WHILE           reduce using rule 23 (control -> loop .)
+    IF              reduce using rule 23 (control -> loop .)
+    $end            reduce using rule 23 (control -> loop .)
+    RBRACE          reduce using rule 23 (control -> loop .)
+
+
+state 11
+
+    (24) control -> conditional .
+
+    IDENTIFIER      reduce using rule 24 (control -> conditional .)
+    WAIT            reduce using rule 24 (control -> conditional .)
+    INT             reduce using rule 24 (control -> conditional .)
+    LEDR            reduce using rule 24 (control -> conditional .)
+    LEDG            reduce using rule 24 (control -> conditional .)
+    SWITCH          reduce using rule 24 (control -> conditional .)
+    WHILE           reduce using rule 24 (control -> conditional .)
+    IF              reduce using rule 24 (control -> conditional .)
+    $end            reduce using rule 24 (control -> conditional .)
+    RBRACE          reduce using rule 24 (control -> conditional .)
+
+
+state 12
+
+    (27) wait -> WAIT . LPAREN NUMBER RPAREN
+
+    LPAREN          shift and go to state 22
+
+
+state 13
+
+    (28) type -> INT .
+
+    IDENTIFIER      reduce using rule 28 (type -> INT .)
+
+
+state 14
+
+    (29) type -> LEDR .
+
+    IDENTIFIER      reduce using rule 29 (type -> LEDR .)
+
+
+state 15
+
+    (30) type -> LEDG .
+
+    IDENTIFIER      reduce using rule 30 (type -> LEDG .)
+
+
+state 16
+
+    (31) type -> SWITCH .
+
+    IDENTIFIER      reduce using rule 31 (type -> SWITCH .)
+
+
+state 17
+
+    (26) loop -> WHILE . LPAREN expression RPAREN LBRACE program RBRACE
+
+    LPAREN          shift and go to state 23
+
+
+state 18
+
+    (25) conditional -> IF . LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+
+    LPAREN          shift and go to state 24
+
+
+state 19
+
+    (3) program -> line program .
+
+    $end            reduce using rule 3 (program -> line program .)
+    RBRACE          reduce using rule 3 (program -> line program .)
+
+
+state 20
+
+    (8) declaration -> type IDENTIFIER . EQ expression
+    (9) declaration -> type IDENTIFIER .
+
+    EQ              shift and go to state 25
+    IDENTIFIER      reduce using rule 9 (declaration -> type IDENTIFIER .)
+    WAIT            reduce using rule 9 (declaration -> type IDENTIFIER .)
+    INT             reduce using rule 9 (declaration -> type IDENTIFIER .)
+    LEDR            reduce using rule 9 (declaration -> type IDENTIFIER .)
+    LEDG            reduce using rule 9 (declaration -> type IDENTIFIER .)
+    SWITCH          reduce using rule 9 (declaration -> type IDENTIFIER .)
+    WHILE           reduce using rule 9 (declaration -> type IDENTIFIER .)
+    IF              reduce using rule 9 (declaration -> type IDENTIFIER .)
+    $end            reduce using rule 9 (declaration -> type IDENTIFIER .)
+    RBRACE          reduce using rule 9 (declaration -> type IDENTIFIER .)
+
+
+state 21
+
+    (10) assignment -> IDENTIFIER EQ . expression
+    (11) expression -> . expression primative_op expression
+    (12) expression -> . unary_op expression
+    (21) expression -> . NUMBER
+    (22) expression -> . IDENTIFIER
+    (13) unary_op -> . DEREF
+
+    NUMBER          shift and go to state 29
+    IDENTIFIER      shift and go to state 26
+    DEREF           shift and go to state 30
+
+    expression                     shift and go to state 27
+    unary_op                       shift and go to state 28
+
+state 22
+
+    (27) wait -> WAIT LPAREN . NUMBER RPAREN
+
+    NUMBER          shift and go to state 31
+
+
+state 23
+
+    (26) loop -> WHILE LPAREN . expression RPAREN LBRACE program RBRACE
+    (11) expression -> . expression primative_op expression
+    (12) expression -> . unary_op expression
+    (21) expression -> . NUMBER
+    (22) expression -> . IDENTIFIER
+    (13) unary_op -> . DEREF
+
+    NUMBER          shift and go to state 29
+    IDENTIFIER      shift and go to state 26
+    DEREF           shift and go to state 30
+
+    expression                     shift and go to state 32
+    unary_op                       shift and go to state 28
+
+state 24
+
+    (25) conditional -> IF LPAREN . expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+    (11) expression -> . expression primative_op expression
+    (12) expression -> . unary_op expression
+    (21) expression -> . NUMBER
+    (22) expression -> . IDENTIFIER
+    (13) unary_op -> . DEREF
+
+    NUMBER          shift and go to state 29
+    IDENTIFIER      shift and go to state 26
+    DEREF           shift and go to state 30
+
+    expression                     shift and go to state 33
+    unary_op                       shift and go to state 28
+
+state 25
+
+    (8) declaration -> type IDENTIFIER EQ . expression
+    (11) expression -> . expression primative_op expression
+    (12) expression -> . unary_op expression
+    (21) expression -> . NUMBER
+    (22) expression -> . IDENTIFIER
+    (13) unary_op -> . DEREF
+
+    NUMBER          shift and go to state 29
+    IDENTIFIER      shift and go to state 26
+    DEREF           shift and go to state 30
+
+    expression                     shift and go to state 34
+    unary_op                       shift and go to state 28
+
+state 26
+
+    (22) expression -> IDENTIFIER .
+
+    PLUS            reduce using rule 22 (expression -> IDENTIFIER .)
+    MINUS           reduce using rule 22 (expression -> IDENTIFIER .)
+    MULT            reduce using rule 22 (expression -> IDENTIFIER .)
+    EQV             reduce using rule 22 (expression -> IDENTIFIER .)
+    OR              reduce using rule 22 (expression -> IDENTIFIER .)
+    AND             reduce using rule 22 (expression -> IDENTIFIER .)
+    NEQV            reduce using rule 22 (expression -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 22 (expression -> IDENTIFIER .)
+    WAIT            reduce using rule 22 (expression -> IDENTIFIER .)
+    INT             reduce using rule 22 (expression -> IDENTIFIER .)
+    LEDR            reduce using rule 22 (expression -> IDENTIFIER .)
+    LEDG            reduce using rule 22 (expression -> IDENTIFIER .)
+    SWITCH          reduce using rule 22 (expression -> IDENTIFIER .)
+    WHILE           reduce using rule 22 (expression -> IDENTIFIER .)
+    IF              reduce using rule 22 (expression -> IDENTIFIER .)
+    $end            reduce using rule 22 (expression -> IDENTIFIER .)
+    RBRACE          reduce using rule 22 (expression -> IDENTIFIER .)
+    RPAREN          reduce using rule 22 (expression -> IDENTIFIER .)
+
+
+state 27
+
+    (10) assignment -> IDENTIFIER EQ expression .
+    (11) expression -> expression . primative_op expression
+    (14) primative_op -> . PLUS
+    (15) primative_op -> . MINUS
+    (16) primative_op -> . MULT
+    (17) primative_op -> . EQV
+    (18) primative_op -> . OR
+    (19) primative_op -> . AND
+    (20) primative_op -> . NEQV
+
+    IDENTIFIER      reduce using rule 10 (assignment -> IDENTIFIER EQ expression .)
+    WAIT            reduce using rule 10 (assignment -> IDENTIFIER EQ expression .)
+    INT             reduce using rule 10 (assignment -> IDENTIFIER EQ expression .)
+    LEDR            reduce using rule 10 (assignment -> IDENTIFIER EQ expression .)
+    LEDG            reduce using rule 10 (assignment -> IDENTIFIER EQ expression .)
+    SWITCH          reduce using rule 10 (assignment -> IDENTIFIER EQ expression .)
+    WHILE           reduce using rule 10 (assignment -> IDENTIFIER EQ expression .)
+    IF              reduce using rule 10 (assignment -> IDENTIFIER EQ expression .)
+    $end            reduce using rule 10 (assignment -> IDENTIFIER EQ expression .)
+    RBRACE          reduce using rule 10 (assignment -> IDENTIFIER EQ expression .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    MULT            shift and go to state 38
+    EQV             shift and go to state 39
+    OR              shift and go to state 40
+    AND             shift and go to state 41
+    NEQV            shift and go to state 42
+
+    primative_op                   shift and go to state 35
+
+state 28
+
+    (12) expression -> unary_op . expression
+    (11) expression -> . expression primative_op expression
+    (12) expression -> . unary_op expression
+    (21) expression -> . NUMBER
+    (22) expression -> . IDENTIFIER
+    (13) unary_op -> . DEREF
+
+    NUMBER          shift and go to state 29
+    IDENTIFIER      shift and go to state 26
+    DEREF           shift and go to state 30
+
+    unary_op                       shift and go to state 28
+    expression                     shift and go to state 43
+
+state 29
+
+    (21) expression -> NUMBER .
+
+    PLUS            reduce using rule 21 (expression -> NUMBER .)
+    MINUS           reduce using rule 21 (expression -> NUMBER .)
+    MULT            reduce using rule 21 (expression -> NUMBER .)
+    EQV             reduce using rule 21 (expression -> NUMBER .)
+    OR              reduce using rule 21 (expression -> NUMBER .)
+    AND             reduce using rule 21 (expression -> NUMBER .)
+    NEQV            reduce using rule 21 (expression -> NUMBER .)
+    IDENTIFIER      reduce using rule 21 (expression -> NUMBER .)
+    WAIT            reduce using rule 21 (expression -> NUMBER .)
+    INT             reduce using rule 21 (expression -> NUMBER .)
+    LEDR            reduce using rule 21 (expression -> NUMBER .)
+    LEDG            reduce using rule 21 (expression -> NUMBER .)
+    SWITCH          reduce using rule 21 (expression -> NUMBER .)
+    WHILE           reduce using rule 21 (expression -> NUMBER .)
+    IF              reduce using rule 21 (expression -> NUMBER .)
+    $end            reduce using rule 21 (expression -> NUMBER .)
+    RBRACE          reduce using rule 21 (expression -> NUMBER .)
+    RPAREN          reduce using rule 21 (expression -> NUMBER .)
+
+
+state 30
+
+    (13) unary_op -> DEREF .
+
+    NUMBER          reduce using rule 13 (unary_op -> DEREF .)
+    IDENTIFIER      reduce using rule 13 (unary_op -> DEREF .)
+    DEREF           reduce using rule 13 (unary_op -> DEREF .)
+
+
+state 31
+
+    (27) wait -> WAIT LPAREN NUMBER . RPAREN
+
+    RPAREN          shift and go to state 44
+
+
+state 32
+
+    (26) loop -> WHILE LPAREN expression . RPAREN LBRACE program RBRACE
+    (11) expression -> expression . primative_op expression
+    (14) primative_op -> . PLUS
+    (15) primative_op -> . MINUS
+    (16) primative_op -> . MULT
+    (17) primative_op -> . EQV
+    (18) primative_op -> . OR
+    (19) primative_op -> . AND
+    (20) primative_op -> . NEQV
+
+    RPAREN          shift and go to state 45
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    MULT            shift and go to state 38
+    EQV             shift and go to state 39
+    OR              shift and go to state 40
+    AND             shift and go to state 41
+    NEQV            shift and go to state 42
+
+    primative_op                   shift and go to state 35
+
+state 33
+
+    (25) conditional -> IF LPAREN expression . RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+    (11) expression -> expression . primative_op expression
+    (14) primative_op -> . PLUS
+    (15) primative_op -> . MINUS
+    (16) primative_op -> . MULT
+    (17) primative_op -> . EQV
+    (18) primative_op -> . OR
+    (19) primative_op -> . AND
+    (20) primative_op -> . NEQV
+
+    RPAREN          shift and go to state 46
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    MULT            shift and go to state 38
+    EQV             shift and go to state 39
+    OR              shift and go to state 40
+    AND             shift and go to state 41
+    NEQV            shift and go to state 42
+
+    primative_op                   shift and go to state 35
+
+state 34
+
+    (8) declaration -> type IDENTIFIER EQ expression .
+    (11) expression -> expression . primative_op expression
+    (14) primative_op -> . PLUS
+    (15) primative_op -> . MINUS
+    (16) primative_op -> . MULT
+    (17) primative_op -> . EQV
+    (18) primative_op -> . OR
+    (19) primative_op -> . AND
+    (20) primative_op -> . NEQV
+
+    IDENTIFIER      reduce using rule 8 (declaration -> type IDENTIFIER EQ expression .)
+    WAIT            reduce using rule 8 (declaration -> type IDENTIFIER EQ expression .)
+    INT             reduce using rule 8 (declaration -> type IDENTIFIER EQ expression .)
+    LEDR            reduce using rule 8 (declaration -> type IDENTIFIER EQ expression .)
+    LEDG            reduce using rule 8 (declaration -> type IDENTIFIER EQ expression .)
+    SWITCH          reduce using rule 8 (declaration -> type IDENTIFIER EQ expression .)
+    WHILE           reduce using rule 8 (declaration -> type IDENTIFIER EQ expression .)
+    IF              reduce using rule 8 (declaration -> type IDENTIFIER EQ expression .)
+    $end            reduce using rule 8 (declaration -> type IDENTIFIER EQ expression .)
+    RBRACE          reduce using rule 8 (declaration -> type IDENTIFIER EQ expression .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    MULT            shift and go to state 38
+    EQV             shift and go to state 39
+    OR              shift and go to state 40
+    AND             shift and go to state 41
+    NEQV            shift and go to state 42
+
+    primative_op                   shift and go to state 35
+
+state 35
+
+    (11) expression -> expression primative_op . expression
+    (11) expression -> . expression primative_op expression
+    (12) expression -> . unary_op expression
+    (21) expression -> . NUMBER
+    (22) expression -> . IDENTIFIER
+    (13) unary_op -> . DEREF
+
+    NUMBER          shift and go to state 29
+    IDENTIFIER      shift and go to state 26
+    DEREF           shift and go to state 30
+
+    expression                     shift and go to state 47
+    unary_op                       shift and go to state 28
+
+state 36
+
+    (14) primative_op -> PLUS .
+
+    NUMBER          reduce using rule 14 (primative_op -> PLUS .)
+    IDENTIFIER      reduce using rule 14 (primative_op -> PLUS .)
+    DEREF           reduce using rule 14 (primative_op -> PLUS .)
+
+
+state 37
+
+    (15) primative_op -> MINUS .
+
+    NUMBER          reduce using rule 15 (primative_op -> MINUS .)
+    IDENTIFIER      reduce using rule 15 (primative_op -> MINUS .)
+    DEREF           reduce using rule 15 (primative_op -> MINUS .)
+
+
+state 38
+
+    (16) primative_op -> MULT .
+
+    NUMBER          reduce using rule 16 (primative_op -> MULT .)
+    IDENTIFIER      reduce using rule 16 (primative_op -> MULT .)
+    DEREF           reduce using rule 16 (primative_op -> MULT .)
+
+
+state 39
+
+    (17) primative_op -> EQV .
+
+    NUMBER          reduce using rule 17 (primative_op -> EQV .)
+    IDENTIFIER      reduce using rule 17 (primative_op -> EQV .)
+    DEREF           reduce using rule 17 (primative_op -> EQV .)
+
+
+state 40
+
+    (18) primative_op -> OR .
+
+    NUMBER          reduce using rule 18 (primative_op -> OR .)
+    IDENTIFIER      reduce using rule 18 (primative_op -> OR .)
+    DEREF           reduce using rule 18 (primative_op -> OR .)
+
+
+state 41
+
+    (19) primative_op -> AND .
+
+    NUMBER          reduce using rule 19 (primative_op -> AND .)
+    IDENTIFIER      reduce using rule 19 (primative_op -> AND .)
+    DEREF           reduce using rule 19 (primative_op -> AND .)
+
+
+state 42
+
+    (20) primative_op -> NEQV .
+
+    NUMBER          reduce using rule 20 (primative_op -> NEQV .)
+    IDENTIFIER      reduce using rule 20 (primative_op -> NEQV .)
+    DEREF           reduce using rule 20 (primative_op -> NEQV .)
+
+
+state 43
+
+    (12) expression -> unary_op expression .
+    (11) expression -> expression . primative_op expression
+    (14) primative_op -> . PLUS
+    (15) primative_op -> . MINUS
+    (16) primative_op -> . MULT
+    (17) primative_op -> . EQV
+    (18) primative_op -> . OR
+    (19) primative_op -> . AND
+    (20) primative_op -> . NEQV
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for EQV resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for NEQV resolved as shift
+    IDENTIFIER      reduce using rule 12 (expression -> unary_op expression .)
+    WAIT            reduce using rule 12 (expression -> unary_op expression .)
+    INT             reduce using rule 12 (expression -> unary_op expression .)
+    LEDR            reduce using rule 12 (expression -> unary_op expression .)
+    LEDG            reduce using rule 12 (expression -> unary_op expression .)
+    SWITCH          reduce using rule 12 (expression -> unary_op expression .)
+    WHILE           reduce using rule 12 (expression -> unary_op expression .)
+    IF              reduce using rule 12 (expression -> unary_op expression .)
+    $end            reduce using rule 12 (expression -> unary_op expression .)
+    RBRACE          reduce using rule 12 (expression -> unary_op expression .)
+    RPAREN          reduce using rule 12 (expression -> unary_op expression .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    MULT            shift and go to state 38
+    EQV             shift and go to state 39
+    OR              shift and go to state 40
+    AND             shift and go to state 41
+    NEQV            shift and go to state 42
+
+  ! PLUS            [ reduce using rule 12 (expression -> unary_op expression .) ]
+  ! MINUS           [ reduce using rule 12 (expression -> unary_op expression .) ]
+  ! MULT            [ reduce using rule 12 (expression -> unary_op expression .) ]
+  ! EQV             [ reduce using rule 12 (expression -> unary_op expression .) ]
+  ! OR              [ reduce using rule 12 (expression -> unary_op expression .) ]
+  ! AND             [ reduce using rule 12 (expression -> unary_op expression .) ]
+  ! NEQV            [ reduce using rule 12 (expression -> unary_op expression .) ]
+
+    primative_op                   shift and go to state 35
+
+state 44
+
+    (27) wait -> WAIT LPAREN NUMBER RPAREN .
+
+    IDENTIFIER      reduce using rule 27 (wait -> WAIT LPAREN NUMBER RPAREN .)
+    WAIT            reduce using rule 27 (wait -> WAIT LPAREN NUMBER RPAREN .)
+    INT             reduce using rule 27 (wait -> WAIT LPAREN NUMBER RPAREN .)
+    LEDR            reduce using rule 27 (wait -> WAIT LPAREN NUMBER RPAREN .)
+    LEDG            reduce using rule 27 (wait -> WAIT LPAREN NUMBER RPAREN .)
+    SWITCH          reduce using rule 27 (wait -> WAIT LPAREN NUMBER RPAREN .)
+    WHILE           reduce using rule 27 (wait -> WAIT LPAREN NUMBER RPAREN .)
+    IF              reduce using rule 27 (wait -> WAIT LPAREN NUMBER RPAREN .)
+    $end            reduce using rule 27 (wait -> WAIT LPAREN NUMBER RPAREN .)
+    RBRACE          reduce using rule 27 (wait -> WAIT LPAREN NUMBER RPAREN .)
+
+
+state 45
+
+    (26) loop -> WHILE LPAREN expression RPAREN . LBRACE program RBRACE
+
+    LBRACE          shift and go to state 48
+
+
+state 46
+
+    (25) conditional -> IF LPAREN expression RPAREN . LBRACE program RBRACE ELSE LBRACE program RBRACE
+
+    LBRACE          shift and go to state 49
+
+
+state 47
+
+    (11) expression -> expression primative_op expression .
+    (11) expression -> expression . primative_op expression
+    (14) primative_op -> . PLUS
+    (15) primative_op -> . MINUS
+    (16) primative_op -> . MULT
+    (17) primative_op -> . EQV
+    (18) primative_op -> . OR
+    (19) primative_op -> . AND
+    (20) primative_op -> . NEQV
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for EQV resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for NEQV resolved as shift
+    IDENTIFIER      reduce using rule 11 (expression -> expression primative_op expression .)
+    WAIT            reduce using rule 11 (expression -> expression primative_op expression .)
+    INT             reduce using rule 11 (expression -> expression primative_op expression .)
+    LEDR            reduce using rule 11 (expression -> expression primative_op expression .)
+    LEDG            reduce using rule 11 (expression -> expression primative_op expression .)
+    SWITCH          reduce using rule 11 (expression -> expression primative_op expression .)
+    WHILE           reduce using rule 11 (expression -> expression primative_op expression .)
+    IF              reduce using rule 11 (expression -> expression primative_op expression .)
+    $end            reduce using rule 11 (expression -> expression primative_op expression .)
+    RBRACE          reduce using rule 11 (expression -> expression primative_op expression .)
+    RPAREN          reduce using rule 11 (expression -> expression primative_op expression .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    MULT            shift and go to state 38
+    EQV             shift and go to state 39
+    OR              shift and go to state 40
+    AND             shift and go to state 41
+    NEQV            shift and go to state 42
+
+  ! PLUS            [ reduce using rule 11 (expression -> expression primative_op expression .) ]
+  ! MINUS           [ reduce using rule 11 (expression -> expression primative_op expression .) ]
+  ! MULT            [ reduce using rule 11 (expression -> expression primative_op expression .) ]
+  ! EQV             [ reduce using rule 11 (expression -> expression primative_op expression .) ]
+  ! OR              [ reduce using rule 11 (expression -> expression primative_op expression .) ]
+  ! AND             [ reduce using rule 11 (expression -> expression primative_op expression .) ]
+  ! NEQV            [ reduce using rule 11 (expression -> expression primative_op expression .) ]
+
+    primative_op                   shift and go to state 35
+
+state 48
+
+    (26) loop -> WHILE LPAREN expression RPAREN LBRACE . program RBRACE
+    (2) program -> . line
+    (3) program -> . line program
+    (4) line -> . declaration
+    (5) line -> . assignment
+    (6) line -> . control
+    (7) line -> . wait
+    (8) declaration -> . type IDENTIFIER EQ expression
+    (9) declaration -> . type IDENTIFIER
+    (10) assignment -> . IDENTIFIER EQ expression
+    (23) control -> . loop
+    (24) control -> . conditional
+    (27) wait -> . WAIT LPAREN NUMBER RPAREN
+    (28) type -> . INT
+    (29) type -> . LEDR
+    (30) type -> . LEDG
+    (31) type -> . SWITCH
+    (26) loop -> . WHILE LPAREN expression RPAREN LBRACE program RBRACE
+    (25) conditional -> . IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+
+    IDENTIFIER      shift and go to state 9
+    WAIT            shift and go to state 12
+    INT             shift and go to state 13
+    LEDR            shift and go to state 14
+    LEDG            shift and go to state 15
+    SWITCH          shift and go to state 16
+    WHILE           shift and go to state 17
+    IF              shift and go to state 18
+
+    program                        shift and go to state 50
+    line                           shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    control                        shift and go to state 6
+    wait                           shift and go to state 7
+    type                           shift and go to state 8
+    loop                           shift and go to state 10
+    conditional                    shift and go to state 11
+
+state 49
+
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE . program RBRACE ELSE LBRACE program RBRACE
+    (2) program -> . line
+    (3) program -> . line program
+    (4) line -> . declaration
+    (5) line -> . assignment
+    (6) line -> . control
+    (7) line -> . wait
+    (8) declaration -> . type IDENTIFIER EQ expression
+    (9) declaration -> . type IDENTIFIER
+    (10) assignment -> . IDENTIFIER EQ expression
+    (23) control -> . loop
+    (24) control -> . conditional
+    (27) wait -> . WAIT LPAREN NUMBER RPAREN
+    (28) type -> . INT
+    (29) type -> . LEDR
+    (30) type -> . LEDG
+    (31) type -> . SWITCH
+    (26) loop -> . WHILE LPAREN expression RPAREN LBRACE program RBRACE
+    (25) conditional -> . IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+
+    IDENTIFIER      shift and go to state 9
+    WAIT            shift and go to state 12
+    INT             shift and go to state 13
+    LEDR            shift and go to state 14
+    LEDG            shift and go to state 15
+    SWITCH          shift and go to state 16
+    WHILE           shift and go to state 17
+    IF              shift and go to state 18
+
+    program                        shift and go to state 51
+    line                           shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    control                        shift and go to state 6
+    wait                           shift and go to state 7
+    type                           shift and go to state 8
+    loop                           shift and go to state 10
+    conditional                    shift and go to state 11
+
+state 50
+
+    (26) loop -> WHILE LPAREN expression RPAREN LBRACE program . RBRACE
+
+    RBRACE          shift and go to state 52
+
+
+state 51
+
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE program . RBRACE ELSE LBRACE program RBRACE
+
+    RBRACE          shift and go to state 53
+
+
+state 52
+
+    (26) loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE .
+
+    IDENTIFIER      reduce using rule 26 (loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE .)
+    WAIT            reduce using rule 26 (loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE .)
+    INT             reduce using rule 26 (loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE .)
+    LEDR            reduce using rule 26 (loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE .)
+    LEDG            reduce using rule 26 (loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE .)
+    SWITCH          reduce using rule 26 (loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE .)
+    WHILE           reduce using rule 26 (loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE .)
+    IF              reduce using rule 26 (loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE .)
+    $end            reduce using rule 26 (loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE .)
+    RBRACE          reduce using rule 26 (loop -> WHILE LPAREN expression RPAREN LBRACE program RBRACE .)
+
+
+state 53
+
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE . ELSE LBRACE program RBRACE
+
+    ELSE            shift and go to state 54
+
+
+state 54
+
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE . LBRACE program RBRACE
+
+    LBRACE          shift and go to state 55
+
+
+state 55
+
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE . program RBRACE
+    (2) program -> . line
+    (3) program -> . line program
+    (4) line -> . declaration
+    (5) line -> . assignment
+    (6) line -> . control
+    (7) line -> . wait
+    (8) declaration -> . type IDENTIFIER EQ expression
+    (9) declaration -> . type IDENTIFIER
+    (10) assignment -> . IDENTIFIER EQ expression
+    (23) control -> . loop
+    (24) control -> . conditional
+    (27) wait -> . WAIT LPAREN NUMBER RPAREN
+    (28) type -> . INT
+    (29) type -> . LEDR
+    (30) type -> . LEDG
+    (31) type -> . SWITCH
+    (26) loop -> . WHILE LPAREN expression RPAREN LBRACE program RBRACE
+    (25) conditional -> . IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+
+    IDENTIFIER      shift and go to state 9
+    WAIT            shift and go to state 12
+    INT             shift and go to state 13
+    LEDR            shift and go to state 14
+    LEDG            shift and go to state 15
+    SWITCH          shift and go to state 16
+    WHILE           shift and go to state 17
+    IF              shift and go to state 18
+
+    program                        shift and go to state 56
+    line                           shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    control                        shift and go to state 6
+    wait                           shift and go to state 7
+    type                           shift and go to state 8
+    loop                           shift and go to state 10
+    conditional                    shift and go to state 11
+
+state 56
+
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program . RBRACE
+
+    RBRACE          shift and go to state 57
+
+
+state 57
+
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .
+
+    IDENTIFIER      reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    WAIT            reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    INT             reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    LEDR            reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    LEDG            reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    SWITCH          reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    WHILE           reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    IF              reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    $end            reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    RBRACE          reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 43 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 43 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 43 resolved as shift
+WARNING: shift/reduce conflict for EQV in state 43 resolved as shift
+WARNING: shift/reduce conflict for OR in state 43 resolved as shift
+WARNING: shift/reduce conflict for AND in state 43 resolved as shift
+WARNING: shift/reduce conflict for NEQV in state 43 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 47 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 47 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 47 resolved as shift
+WARNING: shift/reduce conflict for EQV in state 47 resolved as shift
+WARNING: shift/reduce conflict for OR in state 47 resolved as shift
+WARNING: shift/reduce conflict for AND in state 47 resolved as shift
+WARNING: shift/reduce conflict for NEQV in state 47 resolved as shift
